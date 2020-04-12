@@ -1,8 +1,8 @@
 # PremierLeagueExplorer
 
 Premier League Explorer provides quick access to:
-    - Barclay's Premier League standings
-    - Team info
+- Barclay's Premier League standings
+- Team info
 
 ## Installation
 
