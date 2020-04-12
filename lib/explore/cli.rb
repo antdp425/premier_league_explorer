@@ -8,7 +8,7 @@ class CLI
       puts "=============================="
       puts "      Current Standings       "
       puts "=============================="
-      puts "[Table here]"
+      API.get_table
       puts ""
       puts "Type a team name for more information:"
       @input = gets.strip.downcase
