@@ -8,6 +8,7 @@ class CLI
       puts "=============================="
       puts "      Current Standings       "
       puts "=============================="
+      puts ""
       API.get_table
       puts ""
       puts "Type a team name for more information:"
