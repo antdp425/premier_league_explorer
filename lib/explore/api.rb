@@ -10,9 +10,12 @@ class API
       end
    end
 
-   def self.get_team
-      url = https://api.footystats.org/league-teams?key=test85g57&season_id=2012&include=stats
+   def self.get_team(input)
+      url = "https://api.footystats.org/league-teams?key=test85g57&season_id=2012&include=stats"
       response = Net::HTTP.get(URI(url))
-      team = JSON.parse(response)["data"]["league_table"]
+      teams = JSON.parse(response)["data"]
+      team = teams.detect{|t| t["cleanName"] == input.capitalize}
+      binding.pry
+      # puts team
    end
 end

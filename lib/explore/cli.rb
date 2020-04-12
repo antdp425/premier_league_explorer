@@ -13,5 +13,6 @@ class CLI
       puts ""
       puts "Type a team name for more information:"
       @input = gets.strip.downcase
+      API.get_team(@input)
    end
 end
