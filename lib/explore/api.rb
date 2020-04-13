@@ -16,7 +16,6 @@ class API
       data = JSON.parse(response)["data"]
       data = data.detect{|t| t["cleanName"] == name}
       stats = data["stats"]
-      binding.pry
       team.add_attributes(
          founded: data["founded"], 
          position: data["table_position"], 

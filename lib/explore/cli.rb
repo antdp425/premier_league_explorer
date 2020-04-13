@@ -5,7 +5,6 @@ class CLI
       API.create_teams
       welcome
       menu
-      input = ""
       input = gets.downcase.strip
       while input != "exit"
          if Team.has_team?(input) && Team.find_team(input).has_info?
@@ -18,9 +17,6 @@ class CLI
             puts ""
             puts "Sorry, I don't understand."
          end
-         puts ""
-         Team.print_teams
-         puts ""
          puts ""
          puts "Please enter a team from the list above or type 'exit':"
          puts ""

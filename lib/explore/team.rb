@@ -23,8 +23,6 @@ class Team
 
    def self.find_team(team)
       all.detect {|t| t.name.downcase == team}
-      # has_data = found.position != nil
-      # found && has_data ?
    end
 
    def self.has_team?(team)
@@ -36,8 +34,20 @@ class Team
    end
 
    def display_info
-      puts "This is the team you found and their info"
-      puts self
+      #left =       puts self.name.center(12)
+      #right -       puts self.name.center(58)
+      puts "--------------------------------------------------"
+      puts self.name.center(36)
+      puts "--------------------------------------------------"
+
+      # @founded = founded
+      # @position = position
+      # @wins = wins
+      # @draws = draws
+      # @losses = losses
+      # @g_scored = g_scored
+      # @g_conceded = g_conceded
+      # @website = website
    end
 
    # def self.add_attributes_to_team(team)
