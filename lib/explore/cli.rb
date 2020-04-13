@@ -2,17 +2,31 @@
 
 class CLI
    def explore
+      API.create_teams
+      welcome
+      menu
+      input = ""
+      # while input != "exit"
+      #    input = gets.downcase.strip
+      # end
+      # @input = gets.strip.downcase
+      # API.get_team(@input)
+   end
+
+   def welcome
       puts ""
-      puts "Welcome to Premier League Explorer!!!"
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      puts "Welcome to Premier League Explorer!!"
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       puts ""
-      puts "=============================="
-      puts "      Current Standings       "
-      puts "=============================="
+   end
+
+   def menu
       puts ""
-      API.get_table
+      puts Team.print_teams
       puts ""
-      puts "Type a team name for more information:"
-      @input = gets.strip.downcase
-      API.get_team(@input)
+      puts ""
+      puts "Select a team from the list above to view team facts and stats:"
+      puts ""
    end
 end
