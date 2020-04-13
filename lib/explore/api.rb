@@ -22,6 +22,7 @@ class API
          wins: stats["seasonWinsNum_overall"], 
          draws: stats["seasonDrawsNum_overall"], 
          losses: stats["seasonLossesNum_overall"], 
+         matches_played: stats["seasonMatchesPlayed_overall"],
          g_scored:stats["seasonScoredNum_overall"], 
          g_conceded: stats["seasonConceded_overall"], 
          website: data["official_sites"][""])
