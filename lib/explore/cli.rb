@@ -8,19 +8,26 @@ class CLI
       input = ""
       input = gets.downcase.strip
       while input != "exit"
-         if Team.all.any?{|t| t.name.downcase === input} &&
-            (input == Team.find_team(input).name.downcase) && 
-            Team.find_team(input).has_info?
-               Team.find_team(input).display_info
-         # elsif (input == Team.find_team(input).name.downcase) && !Team.find_team(input).has_info?
-         #    Team.find_team(input).add_attributes
+         if Team.has_team?(input) && Team.find_team(input).has_info?
+            Team.find_team(input).display_info
+         elsif Team.has_team?(input) && !Team.find_team(input).has_info?
+            team = Team.find_team(input)
+            API.get_attributes(team)
+            team.display_info
          else
+            puts ""
             puts "Sorry, I don't understand."
          end
-         puts "What would you like to do next?"
+         puts ""
+         Team.print_teams
+         puts ""
+         puts ""
+         puts "Please enter a team from the list above or type 'exit':"
+         puts ""
          input = gets.downcase.strip
       end
-      puts "Bye"
+      puts ""
+      puts "🔴🔴🔴 GET OFF THE FIELD 🔴🔴🔴"
    end
 
    def welcome
@@ -33,7 +40,7 @@ class CLI
 
    def menu
       puts ""
-      puts Team.print_teams
+      Team.print_teams
       puts ""
       puts ""
       puts "Select a team from the list above to view team facts and stats:"
