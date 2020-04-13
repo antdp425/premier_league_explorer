@@ -23,12 +23,4 @@ class API
 #          puts "----------------------------------------------"
 #       end
 #    end
-
-#    def self.get_team(input)
-#       url = "https://api.footystats.org/league-teams?key=test85g57&season_id=2012&include=stats"
-#       response = Net::HTTP.get(URI(url))
-#       teams = JSON.parse(response)["data"]
-#       team = teams.detect{|t| t["cleanName"] == input.capitalize}
-#       binding.pry
-#    end
 end

@@ -6,11 +6,21 @@ class CLI
       welcome
       menu
       input = ""
-      # while input != "exit"
-      #    input = gets.downcase.strip
-      # end
-      # @input = gets.strip.downcase
-      # API.get_team(@input)
+      input = gets.downcase.strip
+      while input != "exit"
+         if Team.all.any?{|t| t.name.downcase === input} &&
+            (input == Team.find_team(input).name.downcase) && 
+            Team.find_team(input).has_info?
+               Team.find_team(input).display_info
+         # elsif (input == Team.find_team(input).name.downcase) && !Team.find_team(input).has_info?
+         #    Team.find_team(input).add_attributes
+         else
+            puts "Sorry, I don't understand."
+         end
+         puts "What would you like to do next?"
+         input = gets.downcase.strip
+      end
+      puts "Bye"
    end
 
    def welcome
