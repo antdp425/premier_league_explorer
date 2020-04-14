@@ -41,20 +41,27 @@ class CLI
    end
 
    def display_info(team)
+      fact_rows = []
+
+      # fact_rows << ["Founded: #{team.founded}"]
+      # fact_rows << ["Offical Site: #{team.website}"]
+      fact_rows << [team.founded,team.website]
+      fact_table = Terminal::Table.new :title => team.name, :headings => ["Founded","Official Site"], :rows => fact_rows
+
+      stat_rows = []
+      # rows << :separator
+      # rows << ["Current Position"]
+      # rows << :separator
+      # rows << ["#Pos.","Club","Played","Wins","Draws","Losses","GF","GA","GD"]
+      stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded]
+
+      current_standing_table = Terminal::Table.new :title => "Current Standings", :headings => ["#Pos.","Club","Played","Wins","Draws","Losses","GF","GA","GD"], :rows => stat_rows
+
       puts ""
-      puts "----------------------------------------"
-      puts team.name.center(40)
-      puts "----------------------------------------"
-      puts "   Founded: #{team.founded}"
-      puts "   Offical Site: #{team.website}"
+      puts fact_table
+      puts current_standing_table
       puts ""
-      puts "----------------------------------------"
-      puts "Current Position".center(40)
-      puts "----------------------------------------"
-      puts "  #Pos.  P W D L   GS GA GD".center(42)
-      puts "- - - - - - - - - - - - - - - - - - - - "
-      puts "#{team.position}. #{team.name}".center(5) +  "#{team.matches_played} #{team.wins} #{team.draws} #{team.losses}   #{team.g_scored} #{team.g_conceded} #{team.g_scored - team.g_conceded}".center(27)
-      puts "----------------------------------------"
+
    end
 
    def prompt
