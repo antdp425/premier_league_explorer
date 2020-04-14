@@ -19,18 +19,4 @@ class API
          }
    end
 
-#    def self.get_table
-#       url = "https://api.footystats.org/league-tables?key=test85g57&season_id=2012"
-#       response = Net::HTTP.get(URI(url))
-#       table = JSON.parse(response)["data"]["league_table"]
-# puts "=============================="
-# puts "      Current Standings       "
-# puts "=============================="
-#          puts "Position    Club      Points"
-#          puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-#       table.each do |t|
-#          puts "    #{t["position"]}. |      #{t["cleanName"]}  --  #{t["points"]} pts"
-#          puts "----------------------------------------------"
-#       end
-#    end
 end

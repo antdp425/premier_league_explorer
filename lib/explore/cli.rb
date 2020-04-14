@@ -52,12 +52,13 @@ class CLI
 
 
       stat_rows = []
-      stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD"]
+      stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
       stat_rows << :separator
-      stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded]
+      stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded, ((team.wins* 3)+(team.draws)).to_s.colorize(:mode => :bold)]
+
 
       current_standing_table = Terminal::Table.new :title => "Current Standings", :rows => stat_rows
-      9.times{|i| current_standing_table.align_column(i, :center)}
+      10.times{|i| current_standing_table.align_column(i, :center)}
 
       puts ""
       puts fact_table
@@ -87,6 +88,7 @@ class CLI
       puts " -" + "GD:".colorize(:mode => :bold) + " Godl Difference"
    end
 
+   # -- WIP --- 
    # def get_team_color
    #    "default".to_sym
    # colors
@@ -108,5 +110,20 @@ class CLI
    #      :swap      => 7, # Exchange foreground and background colors
    #      :hide      => 8  # Hide text (foreground color would be the same as background)
    # end
+
+   #    def self.get_table
+#       url = "https://api.footystats.org/league-tables?key=test85g57&season_id=2012"
+#       response = Net::HTTP.get(URI(url))
+#       table = JSON.parse(response)["data"]["league_table"]
+# puts "=============================="
+# puts "      Current Standings       "
+# puts "=============================="
+#          puts "Position    Club      Points"
+#          puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+#       table.each do |t|
+#          puts "    #{t["position"]}. |      #{t["cleanName"]}  --  #{t["points"]} pts"
+#          puts "----------------------------------------------"
+#       end
+#    end
 
 end
