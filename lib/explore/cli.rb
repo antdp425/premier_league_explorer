@@ -9,13 +9,14 @@ class CLI
       while input != "exit"
          if input.to_i >= 1 && input.to_i <= Team.all.length
             display_info(Team.all[input.to_i - 1])
+            prompt
          elsif input == "menu"
             menu
          else
             puts ""
-            puts "Sorry, I don't understand."
+            puts "Sorry, I don't understand.".colorize(:color => :light_yellow, :mode => :bold)
+            prompt
          end
-         prompt
          input = gets.downcase.strip
       end
       puts ""
@@ -36,16 +37,18 @@ class CLI
       Team.all.each.with_index(1){|t,i| puts "[#{i}] -- #{t.name}"}
       puts ""
       puts ""
-      puts "Select the number of a team from the list above to view team facts and stats:"
+      puts "Select the [number] of a team from the list above to view team facts and stats:".colorize(:color => :light_cyan, :mode => :bold)
       puts ""
    end
 
    def display_info(team)
       fact_rows = []
+      fact_rows << ["Founded", "Official Site"]
+      fact_rows << :separator
       fact_rows << [team.founded,team.website]
-      fact_table = Terminal::Table.new :title => team.name, :headings => ["Founded", "Official Site"], :rows => fact_rows
-      fact_table.align_column(0, :center)
-      fact_table.align_column(1, :center)
+
+      fact_table = Terminal::Table.new :title => team.name, :rows => fact_rows
+      2.times{|i| fact_table.align_column(i, :center)}
 
 
       stat_rows = []
@@ -54,7 +57,6 @@ class CLI
       stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded]
 
       current_standing_table = Terminal::Table.new :title => "Current Standings", :rows => stat_rows
-
       9.times{|i| current_standing_table.align_column(i, :center)}
 
       puts ""
@@ -68,8 +70,8 @@ class CLI
 
    def prompt
       puts ""
-      puts "Please enter the number of a team from the list above or type 'exit'."
-      puts "You may also type 'menu' to view the list again:"
+      puts "Please enter the [number] of a team from the list above to view another team.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "You may also type 'menu' to view the list again or 'exit' to leave the application:".colorize(:color => :light_cyan, :mode => :bold)
       puts ""
    end
 
@@ -81,9 +83,10 @@ class CLI
       puts " -" + "D:".colorize(:mode => :bold) + " Draws"
       puts " -" + "L:".colorize(:mode => :bold) + " Losses"
       puts " -" + "GF:".colorize(:mode => :bold) + " Goals For"
-      puts " -" + "GA:".colorize(:mode => :bold) + " Goals Against "
-      puts " -" + "GD:".colorize(:mode => :bold) + " Godl Difference +/-"
+      puts " -" + "GA:".colorize(:mode => :bold) + " Goals Against"
+      puts " -" + "GD:".colorize(:mode => :bold) + " Godl Difference"
    end
+
    # def get_team_color
    #    "default".to_sym
    # colors
