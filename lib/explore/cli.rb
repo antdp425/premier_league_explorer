@@ -5,7 +5,7 @@ class CLI
       API.create_teams
       welcome
       menu
-      input = gets.strip
+      input = gets.downcase.strip
       while input != "exit"
          if input.to_i >= 1 && input.to_i <= Team.all.length
             display_info(Team.all[input.to_i - 1])
@@ -33,7 +33,7 @@ class CLI
 
    def menu
       puts ""
-      Team.all.each.with_index(1){|t,i| puts "#{i}. #{t.name}"}
+      Team.all.each.with_index(1){|t,i| puts "[#{i}] -- #{t.name}"}
       puts ""
       puts ""
       puts "Select the number of a team from the list above to view team facts and stats:"
