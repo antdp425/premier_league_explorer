@@ -43,15 +43,19 @@ class CLI
    def display_info(team)
       fact_rows = []
       fact_rows << [team.founded,team.website]
-      fact_table = Terminal::Table.new :title => team.name, :headings => ["Founded".colorize(:blue), "Official Site"], :rows => fact_rows
+      fact_table = Terminal::Table.new :title => team.name, :headings => ["Founded", "Official Site"], :rows => fact_rows
       fact_table.align_column(0, :center)
       fact_table.align_column(1, :center)
 
 
       stat_rows = []
+      stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD"]
+      stat_rows << :separator
       stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded]
 
-      current_standing_table = Terminal::Table.new :title => "Current Standings", :headings => ["#Pos.","Club","Played","Wins","Draws","Losses","GF","GA","GD"], :rows => stat_rows
+      current_standing_table = Terminal::Table.new :title => "Current Standings", :rows => stat_rows
+
+      9.times{|i| current_standing_table.align_column(i, :center)}
 
       puts ""
       puts fact_table
@@ -67,4 +71,27 @@ class CLI
       puts "You may also type 'menu' to view the list again:"
       puts ""
    end
+
+   # def get_team_color
+   #    "default".to_sym
+   # colors
+   #      :black   => 0, :light_black    => 60,
+   #      :red     => 1, :light_red      => 61,
+   #      :green   => 2, :light_green    => 62,
+   #      :yellow  => 3, :light_yellow   => 63,
+   #      :blue    => 4, :light_blue     => 64,
+   #      :magenta => 5, :light_magenta  => 65,
+   #      :cyan    => 6, :light_cyan     => 66,
+   #      :white   => 7, :light_white    => 67,
+   #      :default => 9
+   # modes
+   #      :default   => 0, # Turn off all attributes
+   #      :bold      => 1, # Set bold mode
+   #      :italic    => 3, # Set italic mode
+   #      :underline => 4, # Set underline mode
+   #      :blink     => 5, # Set blink mode
+   #      :swap      => 7, # Exchange foreground and background colors
+   #      :hide      => 8  # Hide text (foreground color would be the same as background)
+   # end
+
 end
