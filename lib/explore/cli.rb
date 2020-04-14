@@ -42,23 +42,20 @@ class CLI
 
    def display_info(team)
       fact_rows = []
-
-      # fact_rows << ["Founded: #{team.founded}"]
-      # fact_rows << ["Offical Site: #{team.website}"]
       fact_rows << [team.founded,team.website]
-      fact_table = Terminal::Table.new :title => team.name, :headings => ["Founded","Official Site"], :rows => fact_rows
+      fact_table = Terminal::Table.new :title => team.name, :headings => ["Founded".colorize(:blue), "Official Site"], :rows => fact_rows
+      fact_table.align_column(0, :center)
+      fact_table.align_column(1, :center)
+
 
       stat_rows = []
-      # rows << :separator
-      # rows << ["Current Position"]
-      # rows << :separator
-      # rows << ["#Pos.","Club","Played","Wins","Draws","Losses","GF","GA","GD"]
       stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded]
 
       current_standing_table = Terminal::Table.new :title => "Current Standings", :headings => ["#Pos.","Club","Played","Wins","Draws","Losses","GF","GA","GD"], :rows => stat_rows
 
       puts ""
       puts fact_table
+      puts ""
       puts current_standing_table
       puts ""
 
