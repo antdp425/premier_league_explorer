@@ -63,6 +63,7 @@ class CLI
       puts current_standing_table
       puts ""
 
+      key
    end
 
    def prompt
@@ -72,6 +73,17 @@ class CLI
       puts ""
    end
 
+   def key
+      puts "Key:".colorize(:mode => :bold)
+      puts " -" + "#Pos.:".colorize(:mode => :bold) + " Position"
+      puts " -" + "P:".colorize(:mode => :bold) + " Played"
+      puts " -" + "W:".colorize(:mode => :bold) + " Wins"
+      puts " -" + "D:".colorize(:mode => :bold) + " Draws"
+      puts " -" + "L:".colorize(:mode => :bold) + " Losses"
+      puts " -" + "GF:".colorize(:mode => :bold) + " Goals For"
+      puts " -" + "GA:".colorize(:mode => :bold) + " Goals Against "
+      puts " -" + "GD:".colorize(:mode => :bold) + " Godl Difference +/-"
+   end
    # def get_team_color
    #    "default".to_sym
    # colors
