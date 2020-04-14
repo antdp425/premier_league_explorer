@@ -5,10 +5,10 @@ class CLI
       API.create_teams
       welcome
       menu
-      input = gets.downcase.strip
+      input = gets.strip
       while input != "exit"
-         if input.to_i <= 1 && input.to_i >= Team.all.length
-            display_info(Team.all[input.to_i-1])
+         if input.to_i >= 1 && input.to_i <= Team.all.length
+            display_info(Team.all[input.to_i - 1])
          elsif input == "menu"
             menu
          else

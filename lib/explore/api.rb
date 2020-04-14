@@ -5,27 +5,19 @@ class API
       url = "https://api.footystats.org/league-teams?key=test85g57&season_id=2012&include=stats"
       response = Net::HTTP.get(URI(url))
       data = JSON.parse(response)["data"]
-      teams = data.each{|t| team = Team.new(name: t["cleanName"])}
+      data.each{|d| Team.new({
+            name: d["cleanName"],
+            founded: d["founded"], 
+            position: d["table_position"], 
+            wins: d["stats"]["seasonWinsNum_overall"], 
+            draws: d["stats"]["seasonDrawsNum_overall"], 
+            losses: d["stats"]["seasonLossesNum_overall"], 
+            matches_played: d["stats"]["seasonMatchesPlayed_overall"],
+            g_scored:d["stats"]["seasonScoredNum_overall"], 
+            g_conceded: d["stats"]["seasonConceded_overall"], 
+            website: d["official_sites"][""]})
+         }
    end
-
-   def self.get_attributes(team)
-      url = "https://api.footystats.org/league-teams?key=test85g57&season_id=2012&include=stats"
-      response = Net::HTTP.get(URI(url))
-      data = JSON.parse(response)["data"]
-      data = data.detect{|t| t["cleanName"] == team.name}
-      stats = data["stats"]
-      team.add_attributes({
-         founded: data["founded"], 
-         position: data["table_position"], 
-         wins: stats["seasonWinsNum_overall"], 
-         draws: stats["seasonDrawsNum_overall"], 
-         losses: stats["seasonLossesNum_overall"], 
-         matches_played: stats["seasonMatchesPlayed_overall"],
-         g_scored:stats["seasonScoredNum_overall"], 
-         g_conceded: stats["seasonConceded_overall"], 
-         website: data["official_sites"][""]})
-   end
-
 
 #    def self.get_table
 #       url = "https://api.footystats.org/league-tables?key=test85g57&season_id=2012"

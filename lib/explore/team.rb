@@ -5,23 +5,14 @@ class Team
 
    @@all = []
 
-   def initialize (name:)
-      @name = name
+   def initialize (team_hash)
+      team_hash.each{|k,v| self.send("#{k}=",v)}
       save
    end
 
-   def add_attributes(att_hash)
-      att_hash.each{|k,v| self.send("#{k}=",v)}
-      # @founded = founded
-      # @position = position
-      # @wins = wins
-      # @draws = draws
-      # @losses = losses
-      # @g_scored = g_scored
-      # @g_conceded = g_conceded
-      # @matches_played = matches_played
-      # @website = website
-   end
+   # def add_attributes(att_hash)
+   #    att_hash.each{|k,v| self.send("#{k}=",v)}
+   # end
 
    def self.find_team(team)
       all.detect {|t| t.name.downcase == team}
