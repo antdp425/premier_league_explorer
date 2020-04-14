@@ -15,10 +15,7 @@ class CLI
             puts ""
             puts "Sorry, I don't understand."
          end
-         puts ""
-         puts "Please enter a team from the list above or type 'exit'."
-         puts "You may also type 'menu' to view the list again:"
-         puts ""
+         prompt
          input = gets.downcase.strip
       end
       puts ""
@@ -39,7 +36,7 @@ class CLI
       Team.all.each.with_index(1){|t,i| puts "#{i}. #{t.name}"}
       puts ""
       puts ""
-      puts "Select a team from the list above to view team facts and stats:"
+      puts "Select the number of a team from the list above to view team facts and stats:"
       puts ""
    end
 
@@ -58,5 +55,12 @@ class CLI
       puts "- - - - - - - - - - - - - - - - - - - - "
       puts "#{team.position}. #{team.name}".center(5) +  "#{team.matches_played} #{team.wins} #{team.draws} #{team.losses}   #{team.g_scored} #{team.g_conceded} #{team.g_scored - team.g_conceded}".center(27)
       puts "----------------------------------------"
+   end
+
+   def prompt
+      puts ""
+      puts "Please enter the number of a team from the list above or type 'exit'."
+      puts "You may also type 'menu' to view the list again:"
+      puts ""
    end
 end
