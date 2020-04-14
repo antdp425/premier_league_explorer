@@ -34,17 +34,17 @@ class Team
    def has_info?
       self.position
    end
-   
+
    def self.all
-      @@all
+      @@all.sort_by!{|t| t.name}
    end
 
    def save
       @@all << self
    end
 
-   def self.print_teams
-      puts all.sort_by{|t| t.name}.collect{|t| t.name}
-   end
+   # def self.print_teams
+   #    all.sort_by{|t| t.name}.collect{|t| t.name}
+   # end
 
 end

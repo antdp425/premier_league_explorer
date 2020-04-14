@@ -5,14 +5,11 @@ class CLI
       API.create_teams
       welcome
       menu
+      binding.pry
       input = gets.downcase.strip
       while input != "exit"
-         if Team.has_team?(input) && Team.find_team(input).has_info?
-            team = Team.find_team(input)
-            display_info(team)
-         elsif Team.has_team?(input) && !Team.find_team(input).has_info?
-            team = Team.find_team(input)
-            API.get_attributes(team)
+         if input.to_i <= 1 && input >= Team.print_teams.length
+            team = Team.print_teams[input.to_i]
             display_info(team)
          elsif input == "menu"
             menu
@@ -41,7 +38,7 @@ class CLI
 
    def menu
       puts ""
-      Team.print_teams
+      Team.all.each{|t| puts t.name}
       puts ""
       puts ""
       puts "Select a team from the list above to view team facts and stats:"
