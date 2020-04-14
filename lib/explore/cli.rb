@@ -13,32 +13,30 @@ class CLI
          elsif input == "menu"
             menu
          else
-            puts ""
+            space
             puts "Sorry, I don't understand.".colorize(:color => :light_yellow, :mode => :bold)
             prompt
          end
          input = gets.downcase.strip
       end
-      puts ""
-      puts "🔴🔴🔴 GET OFF THE FIELD 🔴🔴🔴"
-      puts ""  
+      ejected
    end
 
    def welcome
-      puts ""
+      space
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       puts "Welcome to Premier League Explorer!!"
       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-      puts ""
+      space
    end
 
    def menu
-      puts ""
+      space
       Team.all.each.with_index(1){|t,i| puts "[#{i}] -- #{t.name}"}
-      puts ""
-      puts ""
+      space
+      space
       puts "Select the [number] of a team from the list above to view team facts and stats:".colorize(:color => :light_cyan, :mode => :bold)
-      puts ""
+      space
    end
 
    def display_info(team)
@@ -60,19 +58,29 @@ class CLI
       current_standing_table = Terminal::Table.new :title => "Current Standings", :rows => stat_rows
       10.times{|i| current_standing_table.align_column(i, :center)}
 
-      puts ""
+      space
       puts fact_table
-      puts ""
+      space
       puts current_standing_table
-      puts ""
+      space
 
       key
    end
 
    def prompt
-      puts ""
+      space
       puts "Please enter the [number] of a team from the list above to view another team.".colorize(:color => :light_cyan, :mode => :bold)
       puts "You may also type 'menu' to view the list again or 'exit' to leave the application:".colorize(:color => :light_cyan, :mode => :bold)
+      space
+   end
+
+   def ejected
+      space
+      puts "🔴🔴🔴 GET OFF THE FIELD 🔴🔴🔴"
+      space 
+   end
+
+   def space
       puts ""
    end
 
@@ -91,6 +99,27 @@ class CLI
    # -- WIP --- 
    # def get_team_color
    #    "default".to_sym
+# Arsenal - red / yellow
+# Aston Villa - light blue / dark red
+# Brighton & Hove Albion - blue / white 
+# Burnley - light blue / purple
+# Chelsea - blue / white
+# Crystal Palace - red / blue
+# Everton - blue / white
+# Leicester City - white / bloe
+# Liverpool - red / white
+# Manchester City - white / light blue
+# Manchester United - red / yellow
+# Newcastle United - black / white
+# Norwich City - green / yellow
+# Sheffield United - black / red
+# Southampton - red / white
+# Tottenham Hotspur - navy/whye
+# Watford - yellow / red
+# West Ham United - dark red / light blue
+# Wolverhampton Wanderers - orange / black
+
+
    # colors
    #      :black   => 0, :light_black    => 60,
    #      :red     => 1, :light_red      => 61,
