@@ -15,6 +15,13 @@ In order to use this gem:
 
 (Within 'api.rb' -- you will need to replace "YOURKEY" on line 5 with the API Key that you noted in Step 4.)
 
+The current URL on line 5 will provide stats for the 2019/20 season. (id:2012)
+
+You can update the URL to a different season by changing the number after 'season_id:=' with the ID of another season from this list: https://api.footystats.org/league-list?key=YOURKEY
+
+(Again, replacing 'YOURKEY' with the key noted in Step 4.)
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -34,7 +41,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+- At startup, you will be presented with a list of 20 teams.
+- From there, you will be able to enter a number (noted on the left of the team name in brackets.
+- Afer entering a number, you will be presented with basic info about the team, as well as info about their current position in the league table.
+- Typing 'menu' will show the team list from startup again
+- Typing 'exit' will close the application
 
 ## Development
 
@@ -44,7 +55,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/antdp425/premier_league_explorer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github username>/premier_league_explorer/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/antdp425/premier_league_explorer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/antdp425/premier_league_explorer/blob/master/CODE_OF_CONDUCT.md).
 
 
 ## License
