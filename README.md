@@ -21,6 +21,15 @@ You can update the URL to a different season by changing the number after 'seaso
 
 (Again, replacing 'YOURKEY' with the key noted in Step 4.)
 
+## Prerequisites
+
+Be sure to install the following gems
+```
+gem "HTTParty"
+gem "json"
+gem "terminal-table"
+gem 'colorize'
+```
 
 ## Installation
 
@@ -42,10 +51,10 @@ Or install it yourself as:
 ## Usage
 
 - At startup, you will be presented with a list of 20 teams.
-- From there, you will be able to enter a number (noted on the left of the team name in brackets.
+- From there, you will be able to enter a number (noted on the left of the team name in brackets).
 - Afer entering a number, you will be presented with basic info about the team, as well as info about their current position in the league table.
-- Typing 'menu' will show the team list from startup again
-- Typing 'exit' will close the application
+- Typing 'menu' will show the team list from startup again.
+- Typing 'exit' will close the application.
 
 ## Development
 

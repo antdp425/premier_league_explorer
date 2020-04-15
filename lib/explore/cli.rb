@@ -3,7 +3,6 @@
 class CLI
    def explore
       API.create_teams
-      binding.pry
       welcome
       menu
       input = gets.downcase.strip
@@ -53,7 +52,8 @@ class CLI
       stat_rows = []
       stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
       stat_rows << :separator
-      stat_rows << ["#{team.position}.", 
+      stat_rows << [
+         "#{team.position}.", 
          team.name, 
          team.matches_played, 
          team.wins,
@@ -104,7 +104,8 @@ class CLI
       puts " -" + "L:".colorize(:mode => :bold) + " Losses"
       puts " -" + "GF:".colorize(:mode => :bold) + " Goals For"
       puts " -" + "GA:".colorize(:mode => :bold) + " Goals Against"
-      puts " -" + "GD:".colorize(:mode => :bold) + " Godl Difference"
+      puts " -" + "GD:".colorize(:mode => :bold) + " Goal Difference +/-"
+      puts " -" + "PTS:".colorize(:mode => :bold) + " Points"
    end
 
    # -- WIP --- 
