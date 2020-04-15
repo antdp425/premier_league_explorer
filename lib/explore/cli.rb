@@ -52,7 +52,17 @@ class CLI
       stat_rows = []
       stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
       stat_rows << :separator
-      stat_rows << ["#{team.position}.", team.name, team.matches_played, team.wins,team.draws, team.losses, team.g_scored, team.g_conceded, team.g_scored - team.g_conceded, ((team.wins* 3)+(team.draws)).to_s.colorize(:mode => :bold)]
+      stat_rows << ["#{team.position}.", 
+         team.name, 
+         team.matches_played, 
+         team.wins,
+         team.draws, 
+         team.losses, 
+         team.g_scored, 
+         team.g_conceded, 
+         team.g_scored - team.g_conceded, 
+         ((team.wins* 3)+(team.draws)).to_s.colorize(:mode => :bold)
+      ]
 
 
       current_standing_table = Terminal::Table.new :title => "Current Standings", :rows => stat_rows
@@ -140,7 +150,7 @@ class CLI
    #      :hide      => 8  # Hide text (foreground color would be the same as background)
    # end
 
-   #    def self.get_table
+   #    def get_table
 #       url = "https://api.footystats.org/league-tables?key=test85g57&season_id=2012"
 #       response = Net::HTTP.get(URI(url))
 #       table = JSON.parse(response)["data"]["league_table"]
