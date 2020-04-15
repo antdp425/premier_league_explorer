@@ -1,7 +1,7 @@
 #Creates team objects
 
 class Team
-   attr_accessor :name, :founded, :position, :wins, :draws, :losses, :g_scored, :g_conceded, :matches_played, :website
+   attr_accessor :name, :founded, :position, :wins, :draws, :losses, :g_scored, :g_conceded, :matches_played, :website, :goal_difference, :points
 
    @@all = []
 

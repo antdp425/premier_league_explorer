@@ -3,6 +3,7 @@
 class CLI
    def explore
       API.create_teams
+      binding.pry
       welcome
       menu
       input = gets.downcase.strip
@@ -60,8 +61,8 @@ class CLI
          team.losses, 
          team.g_scored, 
          team.g_conceded, 
-         team.g_scored - team.g_conceded, 
-         ((team.wins* 3)+(team.draws)).to_s.colorize(:mode => :bold)
+         team.goal_difference, 
+         team.points.to_s.colorize(:mode => :bold)
       ]
 
 

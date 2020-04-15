@@ -15,8 +15,11 @@ class API
             matches_played: d["stats"]["seasonMatchesPlayed_overall"],
             g_scored:d["stats"]["seasonScoredNum_overall"], 
             g_conceded: d["stats"]["seasonConceded_overall"], 
-            website: d["official_sites"][""]})
+            website: d["official_sites"][""],
+            goal_difference:d["stats"]["seasonScoredNum_overall"] - d["stats"]["seasonConceded_overall"],
+            points: ((d["stats"]["seasonWinsNum_overall"] * 3) + (d["stats"]["seasonDrawsNum_overall"])) })
          }
+         #Add GD as property
    end
 
 end
