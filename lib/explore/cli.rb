@@ -32,9 +32,9 @@ class CLI
 
    def welcome
       space
-      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-      puts "Welcome to Premier League Explorer!!"
-      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:mode => :bold)
+      puts "Welcome to Premier League Explorer!!!".colorize(:color => :light_magenta, :mode => :bold)
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~".colorize(:mode => :bold)
       space
    end
 
