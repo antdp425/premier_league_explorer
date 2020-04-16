@@ -61,7 +61,7 @@ class CLI
    end
 
    def table_prompt
-      puts "Type 'MENU' to view the original list of teams again to view stats and facts.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
       space
@@ -82,7 +82,7 @@ class CLI
       
       
       stat_rows = []
-      stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
+      stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS"].collect{|s| s.colorize(:mode => :bold)}
       stat_rows << :separator
 
       if team_above != nil
@@ -144,7 +144,7 @@ class CLI
 
    def display_table
       table_rows = []
-      table_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
+      table_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS"].collect{|s| s.colorize(:mode => :bold)}
       Team.all.sort_by{|t| t.position}.each do |t|
          table_rows << :separator
          table_rows << [
