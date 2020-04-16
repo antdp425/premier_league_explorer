@@ -1,6 +1,7 @@
 #Handles input/output for user
 
 class CLI
+
    def explore
       API.create_teams
       welcome
@@ -106,10 +107,8 @@ class CLI
    end
 
    def display_table
-      #SHOULD BE A WAY TO JUST SET SEPARATORS FOR EACH ROW
       table_rows = []
       table_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
-      table_rows << :separator
       Team.all.sort_by{|t| t.position}.each do |t|
          table_rows << :separator
          table_rows << [
