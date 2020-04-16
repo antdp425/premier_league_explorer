@@ -68,35 +68,71 @@ class CLI
    end
 
    def display_info(team)
+      
+      team_above = Team.all.find{|t| t.position == team.position - 1}
+      team_below = Team.all.find{|t| t.position == team.position + 1}
+      
       fact_rows = []
       fact_rows << ["Founded", "Official Site"]
       fact_rows << :separator
       fact_rows << [team.founded,team.website]
-
+      
       fact_table = Terminal::Table.new :title => team.name, :rows => fact_rows
       2.times{|i| fact_table.align_column(i, :center)}
-
-
+      
+      
       stat_rows = []
       stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
       stat_rows << :separator
+
+      if team_above != nil
+         stat_rows << [
+            "#{team_above.position}.", 
+            team_above.name, 
+            team_above.matches_played, 
+            team_above.wins,
+            team_above.draws, 
+            team_above.losses, 
+            team_above.g_scored, 
+            team_above.g_conceded, 
+            team_above.goal_difference, 
+            team_above.points.to_s.colorize(:mode => :bold)
+         ]
+      end
+
       stat_rows << [
          "#{team.position}.", 
          team.name, 
-         team.matches_played, 
-         team.wins,
-         team.draws, 
-         team.losses, 
-         team.g_scored, 
-         team.g_conceded, 
-         team.goal_difference, 
-         team.points.to_s.colorize(:mode => :bold)
-      ]
+         team.matches_played.to_s, 
+         team.wins.to_s,
+         team.draws.to_s, 
+         team.losses.to_s, 
+         team.g_scored.to_s, 
+         team.g_conceded.to_s, 
+         team.goal_difference.to_s, 
+         team.points.to_s
+      ].collect{|t| t.colorize(:color => :light_yellow, :mode => :bold)}
 
-
+      if team_below != nil
+         stat_rows << [
+            "#{team_below.position}.", 
+            team_below.name, 
+            team_below.matches_played, 
+            team_below.wins,
+            team_below.draws, 
+            team_below.losses, 
+            team_below.g_scored, 
+            team_below.g_conceded, 
+            team_below.goal_difference, 
+            team_below.points.to_s.colorize(:mode => :bold)
+         ]
+      end
+      
+      
+      
       current_position_table = Terminal::Table.new :title => "Current Position", :rows => stat_rows
       10.times{|i| current_position_table.align_column(i, :center)}
-
+      
       space
       puts fact_table
       space
