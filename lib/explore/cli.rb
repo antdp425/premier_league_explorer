@@ -60,10 +60,10 @@ class CLI
    end
 
    def table_prompt
-         puts "Type 'MENU' to view the original list of teams again to view stats and facts.".colorize(:color => :light_cyan, :mode => :bold)
-         puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
-         puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
-         space
+      puts "Type 'MENU' to view the original list of teams again to view stats and facts.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
+      space
    end
 
    def display_info(team)
@@ -93,20 +93,20 @@ class CLI
       ]
 
 
-      current_standing_table = Terminal::Table.new :title => "Current Standings", :rows => stat_rows
-      10.times{|i| current_standing_table.align_column(i, :center)}
+      current_position_table = Terminal::Table.new :title => "Current Position", :rows => stat_rows
+      10.times{|i| current_position_table.align_column(i, :center)}
 
       space
       puts fact_table
       space
-      puts current_standing_table
+      puts current_position_table
       space
 
       key
    end
 
    def display_table
-
+      #SHOULD BE A WAY TO JUST SET SEPARATORS FOR EACH ROW
       table_rows = []
       table_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
       table_rows << :separator
@@ -127,11 +127,11 @@ class CLI
       end
 
 
-      table = Terminal::Table.new :title => "Standings", :rows => table_rows
-      10.times{|i| table.align_column(i, :center)}
+      standings = Terminal::Table.new :title => "Standings", :rows => table_rows
+      10.times{|i| standings.align_column(i, :center)}
 
       space
-      puts table
+      puts standings
       space
 
       key

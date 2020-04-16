@@ -11,7 +11,7 @@ class Team
    end
 
    def self.all
-      @@all.sort_by!{|t| t.name}
+      @@all.sort_by{|t| t.name}
    end
 
    def save
