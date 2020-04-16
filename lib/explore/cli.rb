@@ -45,28 +45,7 @@ class CLI
       space
    end
 
-   def prompt
-      puts "Type the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
-      space
-   end
-
-   def menu_prompt
-      puts "Type the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
-      space
-   end
-
-   def table_prompt
-      puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
-      space
-   end
-
+   
    def display_info(team)
       
       team_above = Team.all.find{|t| t.position == team.position - 1}
@@ -84,7 +63,7 @@ class CLI
       stat_rows = []
       stat_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS"].collect{|s| s.colorize(:mode => :bold)}
       stat_rows << :separator
-
+      
       if team_above != nil
          stat_rows << [
             "#{team_above.position}.", 
@@ -99,7 +78,7 @@ class CLI
             team_above.points.to_s.colorize(:mode => :bold)
          ]
       end
-
+      
       stat_rows << [
          "#{team.position}.", 
          team.name, 
@@ -112,7 +91,7 @@ class CLI
          team.goal_difference.to_s, 
          team.points.to_s
       ].collect{|t| t.colorize(:color => :light_yellow, :mode => :bold)}
-
+      
       if team_below != nil
          stat_rows << [
             "#{team_below.position}.", 
@@ -138,10 +117,10 @@ class CLI
       space
       puts current_position_table
       space
-
+      
       key
    end
-
+   
    def display_table
       table_rows = []
       table_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS"].collect{|s| s.colorize(:mode => :bold)}
@@ -160,28 +139,51 @@ class CLI
             t.points.to_s.colorize(:mode => :bold)
          ]
       end
-
-
+      
+      
       standings = Terminal::Table.new :title => "Standings", :rows => table_rows
       10.times{|i| standings.align_column(i, :center)}
-
+      
       space
       puts standings
       space
-
+      
       key
    end
+   
+   def prompt
+      puts "Type the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
+      space
+   end
 
+   def menu_prompt
+      puts "Type the [NUMBER] of a team from the original list of teams to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
+      space
+   end
+
+   def table_prompt
+      puts "Type the [NUMBER] of a team from the orignal list of teams to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'TABLE' to view current standings of the English Premier League again.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
+      space
+   end
+   
    def ejected
       space
       puts "🔴🔴🔴 GET OFF THE FIELD 🔴🔴🔴"
       space 
    end
-
+   
    def space
       puts ""
    end
-
+   
    def key
       puts "Key:".colorize(:mode => :bold)
       puts " -" + "#Pos.:".colorize(:mode => :bold) + " Position"
