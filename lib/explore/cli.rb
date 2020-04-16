@@ -46,14 +46,14 @@ class CLI
    end
 
    def prompt
-      puts "Select the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
       space
    end
 
    def menu_prompt
-      puts "Select the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
       puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
