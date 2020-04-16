@@ -5,17 +5,24 @@ class CLI
       API.create_teams
       welcome
       menu
+      prompt
       input = gets.downcase.strip
       while input != "exit"
          if input.to_i >= 1 && input.to_i <= Team.all.length
             display_info(Team.all[input.to_i - 1])
-            prompt
+            space
+            menu_prompt
          elsif input == "menu"
             menu
+            menu_prompt
+         elsif input == "table"
+            display_table
+            space
+            table_prompt
          else
             space
             puts "Sorry, I don't understand.".colorize(:color => :light_yellow, :mode => :bold)
-            prompt
+            menu_prompt
          end
          input = gets.downcase.strip
       end
@@ -35,8 +42,28 @@ class CLI
       Team.all.each.with_index(1){|t,i| puts "[#{i}] -- #{t.name}"}
       space
       space
-      puts "Select the [number] of a team from the list above to view team facts and stats:".colorize(:color => :light_cyan, :mode => :bold)
+   end
+
+   def prompt
+      puts "Select the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
       space
+   end
+
+   def menu_prompt
+      puts "Select the [NUMBER] of a team from the list above to view team facts and stats.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'MENU' to view the original list of teams again.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
+      puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
+      space
+   end
+
+   def table_prompt
+         puts "Type 'MENU' to view the original list of teams again to view stats and facts.".colorize(:color => :light_cyan, :mode => :bold)
+         puts "Type 'TABLE' to view current standings of the English Premier League.".colorize(:color => :light_cyan, :mode => :bold)
+         puts "Type 'EXIT' at any time to leave the application.".colorize(:color => :light_cyan, :mode => :bold)
+         space
    end
 
    def display_info(team)
@@ -78,11 +105,36 @@ class CLI
       key
    end
 
-   def prompt
+   def display_table
+
+      table_rows = []
+      table_rows << ["#Pos.","Club","P","W","D","L","GF","GA","GD","PTS".colorize(:mode => :bold)]
+      table_rows << :separator
+      Team.all.sort_by{|t| t.position}.each do |t|
+         table_rows << :separator
+         table_rows << [
+            "#{t.position}.", 
+            t.name, 
+            t.matches_played, 
+            t.wins,
+            t.draws, 
+            t.losses, 
+            t.g_scored, 
+            t.g_conceded, 
+            t.goal_difference, 
+            t.points.to_s.colorize(:mode => :bold)
+         ]
+      end
+
+
+      table = Terminal::Table.new :title => "Standings", :rows => table_rows
+      10.times{|i| table.align_column(i, :center)}
+
       space
-      puts "Please enter the [number] of a team from the list above to view another team.".colorize(:color => :light_cyan, :mode => :bold)
-      puts "You may also type 'menu' to view the list again or 'exit' to leave the application:".colorize(:color => :light_cyan, :mode => :bold)
+      puts table
       space
+
+      key
    end
 
    def ejected
@@ -151,20 +203,5 @@ class CLI
    #      :swap      => 7, # Exchange foreground and background colors
    #      :hide      => 8  # Hide text (foreground color would be the same as background)
    # end
-
-   #    def get_table
-#       url = "https://api.footystats.org/league-tables?key=test85g57&season_id=2012"
-#       response = Net::HTTP.get(URI(url))
-#       table = JSON.parse(response)["data"]["league_table"]
-# puts "=============================="
-# puts "      Current Standings       "
-# puts "=============================="
-#          puts "Position    Club      Points"
-#          puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-#       table.each do |t|
-#          puts "    #{t["position"]}. |      #{t["cleanName"]}  --  #{t["points"]} pts"
-#          puts "----------------------------------------------"
-#       end
-#    end
 
 end

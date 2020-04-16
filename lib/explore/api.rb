@@ -19,7 +19,6 @@ class API
             goal_difference:d["stats"]["seasonScoredNum_overall"] - d["stats"]["seasonConceded_overall"],
             points: ((d["stats"]["seasonWinsNum_overall"] * 3) + (d["stats"]["seasonDrawsNum_overall"])) })
          }
-         #Add GD as property
    end
 
 end
