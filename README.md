@@ -1,6 +1,9 @@
 # PremierLeagueExplorer
 
-Premier League Explorer provides quick access to basic information about all 20 teams in the  Premier League as well as a quick look into a teams current position in the league.
+Premier League Explorer provides:
+ - access to basic information about all 20 teams in the English Premier League  
+ - a quick look into a teams current position in the league table
+ - a quick look at the full league table
 
 ## Getting Started
 
@@ -54,6 +57,7 @@ Or install it yourself as:
 - From there, you will be able to enter a number (noted on the left of the team name in brackets).
 - Afer entering a number, you will be presented with basic info about the team, as well as info about their current position in the league table.
 - Typing 'menu' will show the team list from startup again.
+- Typing 'table' will show the full league table.
 - Typing 'exit' will close the application.
 
 ## Development
