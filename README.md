@@ -59,6 +59,9 @@ Or install it yourself as:
 
 - From there, you will be able to enter a number (noted on the left of the team name in brackets).
 - Afer entering a number, you will be presented with basic info about the team, as well as info about their current position in the league table.
+
+![Team Facts and Info](https://i.imgur.com/Re0V8zN.png)
+
 - Typing 'menu' will show the team list from startup again.
 - Typing 'table' will show the full league table.
 - Typing 'exit' will close the application.
