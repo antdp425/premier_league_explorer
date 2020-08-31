@@ -1,21 +1,20 @@
-require_relative 'lib/premier_league_explorer/version'
+require_relative 'lib/premier_league_explorer'
 
 Gem::Specification.new do |spec|
   spec.name          = "premier_league_explorer"
-  spec.version       = PremierLeagueExplorer::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["antdp425"]
   spec.email         = ["antdp425@aol.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "A CLI app that allows you to quickly check info about teams in the English Premier League"
+  spec.homepage      = "https://github.com/antdp425/premier_league_explorer"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  spec.metadata["source_code_uri"] = "https://github.com/antdp425/premier_league_explorer"
   spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
