@@ -64,6 +64,9 @@ Or install it yourself as:
 
 - Typing 'menu' will show the team list from startup again.
 - Typing 'table' will show the full league table.
+
+![Full League Table](https://i.imgur.com/DllCfU3.png)
+
 - Typing 'exit' will close the application.
 
 ## Development
