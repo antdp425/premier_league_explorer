@@ -1,7 +1,7 @@
 class API
 
    def self.create_teams
-      url = "https://api.footystats.org/league-teams?key=test85g57&season_id=2012&include=stats"
+      url = "https://api.footystats.org/league-teams?key=YOURKEY&season_id=2012&include=stats"
       response = Net::HTTP.get(URI(url))
       data = JSON.parse(response)["data"]
       data.each{|d| Team.new({
