@@ -26,30 +26,20 @@ You can update the URL to a different season by changing the number after 'seaso
 
 ## Prerequisites
 
-Be sure to install the following gems
+Be sure to install the required gems by running the following commands:
 ```
-gem "HTTParty"
-gem "json"
-gem "terminal-table"
-gem 'colorize'
+gem install httparty
+gem install json
+gem install terminal-table
+gem install colorize
 ```
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-
-gem 'premier_league_explorer'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install premier_league_explorer
+1. Fork and clone this repo to your local machine
+2. Navigate into the cloned repo
+3. Type `ruby bin/explorer`
+4. Use the app 😎
 
 ## Usage
 
