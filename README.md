@@ -1,5 +1,7 @@
 # PremierLeagueExplorer
 
+Walkthrough: https://bit.ly/37UuxKm
+
 Premier League Explorer provides:
  - access to basic information about all 20 teams in the English Premier League for the current season  
  - a quick look into a teams current position in the league table
